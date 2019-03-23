@@ -13,6 +13,8 @@
 #include <cmath>
 #include "util.hpp"
 
+using std::pair;
+
 class Elliptic {
 public:
     Elliptic(int a, int b, int p);
@@ -28,23 +30,26 @@ public:
      * Return:
      *      the position in pair<int, int>
      */
-    std::pair<int, int> GMultiplyBy(int n);
-    
-    
+    pair<int, int> GMultiplyBy(int n);
+    pair<int, int> addTwoPoints(pair<int, int>, pair<int, int>);
     
 private:
     int             a;                  /* parameter */
     int             b;                  /* parameter */
     int             p;                  /* modulo p */
-    std::pair<int, int> generator;
+    pair<int, int> generator;
     
     void pickGenerator();
     
     bool isPointOnCurve(int x, int y);
     
-    std::pair<int, int> MultiplyPointBy(std::pair<int, int>, int);
+    pair<int, int> multiplyPointBy(pair<int, int>, int);
     
-    std::pair<int, int> nextPoint(std::pair<int, int> point);
+    pair<int, int> doublePoint(pair<int, int> point);
+    
+    //pair<int, int> addTwoPoints(pair<int, int>, pair<int, int>);
+    
+    pair<int, int> helpComputeNextPoint(pair<int, int>, pair<int, int>, int);
 };
 
 

@@ -27,8 +27,12 @@ int Util::extEnclid(int d, int f) {
         if (y3 == 0)
             return -1; /* no result */
         
-        if (y3 == 1)
-            return y2 < 0 ? y2 + f : y2;
+        if (y3 == 1) {
+            while (y2 < 0)
+                y2 += f;
+            
+            return y2;
+        }
         
         int q = x3 / y3;
         t1 = x1 - q * y1;
@@ -43,4 +47,11 @@ int Util::extEnclid(int d, int f) {
         y2 = t2;
         y3 = t3;
     }
+}
+
+int Util::convertToPositive(int original, int p) {
+    while (original < 0) {
+        original += p;
+    }
+    return original;
 }

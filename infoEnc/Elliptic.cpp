@@ -8,6 +8,10 @@
 
 #include "Elliptic.hpp"
 
+using std::pair;
+using std::cout;
+using std::cin;
+
 Elliptic::Elliptic(int a, int b, int p) {
     this->a = a;
     this->b = b;
@@ -20,30 +24,30 @@ Elliptic::~Elliptic() {
 }
 
 void Elliptic::ouputAllPoints() {
-    std::pair<int, int> curr = generator;
+    pair<int, int> curr = generator;
     
     int i = 0;
     while(true) {
-        std::cout << ++i << "P" << "(" << curr.first << ", " << curr.second << ")" << std::endl;
-        curr = nextPoint(curr);
+        cout << ++i << "P" << "(" << curr.first << ", " << curr.second << ")" << std::endl;
+        curr = addTwoPoints(curr, generator);
         if (curr.first == generator.first) {
             break;
         }
     }
     
-    std::cout << ++i << "P" << "(" << curr.first << ", " << curr.second << ")" << std::endl;
-    std::cout << "P(O)" << std::endl;
+    cout << ++i << "P" << "(" << curr.first << ", " << curr.second << ")" << std::endl;
+    cout << "P(O)" << std::endl;
 }
 
 void Elliptic::pickGenerator() {
-    std::cout << "Please specify a G for this elliptic curve"
+    cout << "Please specify a G for this elliptic curve"
     << std::endl;
     while(true) {
-        std::cin >> generator.first >> generator.second;
+        cin >> generator.first >> generator.second;
         if (isPointOnCurve(generator.first, generator.second))
             break;
         
-        std::cout << "Invalid position!" << std::endl;
+        cout << "Invalid position!" << std::endl;
     }
 }
 
@@ -54,21 +58,48 @@ bool Elliptic::isPointOnCurve(int x, int y) {
     return left % p == right % p;
 }
 
-std::pair<int, int> Elliptic::MultiplyPointBy(std::pair<int, int> p, int n) {
-    std::pair<int, int> curr = p;
+pair<int, int> Elliptic::multiplyPointBy(pair<int, int> p, int n) {
+    pair<int, int> curr = p;
     while(--n) {
-        curr = nextPoint(curr);
+        curr = addTwoPoints(curr, p);
     }
     return curr;
 }
 
-std::pair<int, int> Elliptic::nextPoint(std::pair<int, int> point) {
+pair<int, int> Elliptic::doublePoint(pair<int, int> point) {
     int numerator = 3 * pow(point.first, 2) + a;
     int denominator = 2 * point.second;
+    /* these two numbers are all positive.. hopefully.. */
+
     int lambda = (numerator * Util::extEnclid(denominator, p)) % p;
+    lambda = Util::convertToPositive(lambda, p);
     
-    std::pair<int, int> next;
-    next.first = lambda * lambda - point.first - point.first;
-    next.second = lambda * (point.first - next.first) - point.second;
+    return helpComputeNextPoint(point, point, lambda);
+}
+
+pair<int, int> Elliptic::addTwoPoints(pair<int, int> pointa, pair<int, int> pointb) {
+    if (pointa == pointb)
+        return doublePoint(pointa);
+    
+    int numerator = pointb.second - pointa.second;
+    int denominator = pointb.first - pointa.first;
+    
+    numerator = Util::convertToPositive(numerator, p);
+    denominator = Util::convertToPositive(denominator, p);
+    
+    int lambda = (numerator * Util::extEnclid(denominator, p)) % p;
+    lambda = Util::convertToPositive(lambda, p);
+    
+    return helpComputeNextPoint(pointa, pointb, lambda);
+}
+
+pair<int, int> Elliptic::helpComputeNextPoint(pair<int, int> pointa, pair<int, int> pointb, int lambda) {
+    
+    pair<int, int> next;
+    next.first = (lambda * lambda - pointa.first - pointb.first) % p;
+    next.second = (lambda * (pointa.first - next.first) - pointa.second) % p;
+    
+    next.first = next.first < 0 ? next.first + p : next.first;
+    next.second = next.second < 0 ? next.second + p : next.second;
     return next;
 }

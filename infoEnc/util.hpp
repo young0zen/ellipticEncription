@@ -14,6 +14,7 @@
 class Util {
 public:
     static int extEnclid(int, int);
+    static int convertToPositive(int, int);
 };
 
 #endif /* util_hpp */
