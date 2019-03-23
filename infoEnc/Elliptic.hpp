@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <cmath>
+#include "util.hpp"
 
 class Elliptic {
 public:
@@ -35,39 +36,15 @@ private:
     int             a;                  /* parameter */
     int             b;                  /* parameter */
     int             p;                  /* modulo p */
-    const int       THRESHOLD = 1e-5;
     std::pair<int, int> generator;
     
-    void pickGenerator() {
-        std::cout << "Please specify a G for this elliptic curve"
-                << std::endl;
-        while(true) {
-            std::cin >> generator.first >> generator.second;
-            if (isPointOnCurve(generator.first, generator.second))
-                break;
-            
-            std::cout << "Invalid position!" << std::endl;
-        }
-    }
+    void pickGenerator();
     
-    bool isPointOnCurve(int x, int y) {
-        return pow(y, 2) - (pow(x, 3) + a * x + b) < THRESHOLD;
-    }
+    bool isPointOnCurve(int x, int y);
     
-    std::pair<int, int> MultiplyPointBy(std::pair<int, int> p, int n) {
-        std::pair<int, int> curr = p;
-        while(--n) {
-            curr = nextPoint(curr);
-        }
-        return curr;
-    }
+    std::pair<int, int> MultiplyPointBy(std::pair<int, int>, int);
     
-    std::pair<int, int> nextPoint(std::pair<int, int> p) {
-        double lambda = (3 * pow(p.first, 2) + a) /
-                (2 * p.second);
-        
-        
-    }
+    std::pair<int, int> nextPoint(std::pair<int, int> point);
 };
 
 
