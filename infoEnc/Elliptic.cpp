@@ -2,8 +2,8 @@
 //  Elliptic.cpp
 //  infoEnc
 //
-//  Created by 王大头 on 2019/3/22.
-//  Copyright © 2019 unclesnake. All rights reserved.
+//  Created by wang on 2019/3/22.
+//  Copyright © 2019 wang. All rights reserved.
 //
 
 #include "Elliptic.hpp"

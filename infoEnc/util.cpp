@@ -2,16 +2,15 @@
 //  util.cpp
 //  infoEnc
 //
-//  Created by 王大头 on 2019/3/23.
-//  Copyright © 2019 unclesnake. All rights reserved.
+//  Created by wang on 2019/3/23.
+//  Copyright © 2019 wang. All rights reserved.
 //
 #include "util.hpp"
 #include <iostream>
 #include <algorithm>
 
 /* compute d^-1 mod f using extender enclid algorithm
- * Parameter:
- d, f, 1/d modulo f
+ * Parameter: d, f, which mean two numbers in "1/d modulo f"
  * Return:
  *      the result, -1 suggesting null
  */
@@ -28,10 +27,7 @@ int Util::extEnclid(int d, int f) {
             return -1; /* no result */
         
         if (y3 == 1) {
-            while (y2 < 0)
-                y2 += f;
-            
-            return y2;
+            return convertToPositive(y2, f);
         }
         
         int q = x3 / y3;
@@ -49,6 +45,11 @@ int Util::extEnclid(int d, int f) {
     }
 }
 
+/*
+ * Convert an integer to smallest positive number and make sure
+ * it has the same mudulo based on parameter p.
+ * Return the positive number.
+ */
 int Util::convertToPositive(int original, int p) {
     while (original < 0) {
         original += p;
