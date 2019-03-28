@@ -11,32 +11,44 @@
 using std::pair;
 using std::cout;
 using std::cin;
+using std::endl;
 
 Elliptic::Elliptic(int a, int b, int p) {
     this->a = a;
     this->b = b;
     this->p = p;
     pickGenerator();
+    generateAbelSet();
 }
 
 Elliptic::~Elliptic() {
     
 }
 
-void Elliptic::ouputAllPoints() {
+pair<int, int> Elliptic::GMultiplyBy(int n) {
+    return multiplyPointBy(generator, n);
+}
+
+void Elliptic::generateAbelSet() {
     pair<int, int> curr = generator;
     
-    int i = 0;
     while(true) {
-        cout << ++i << "P" << "(" << curr.first << ", " << curr.second << ")" << std::endl;
+        abelSet.push_back(curr);
         curr = addTwoPoints(curr, generator);
         if (curr.first == generator.first) {
             break;
         }
     }
-    
-    cout << ++i << "P" << "(" << curr.first << ", " << curr.second << ")" << std::endl;
-    cout << "P(O)" << std::endl;
+    abelSet.push_back(curr);
+}
+
+void Elliptic::ouputAllPoints() {
+    int i = 0;
+    for (pair<int, int> point : abelSet) {
+        cout << ++i << "P(" << point.first << ", " << point.second
+                << ")" << endl;
+    }
+    cout << "P(O)" << endl;
 }
 
 void Elliptic::pickGenerator() {
@@ -102,4 +114,21 @@ pair<int, int> Elliptic::helpComputeNextPoint(pair<int, int> pointa, pair<int, i
     next.first = next.first < 0 ? next.first + p : next.first;
     next.second = next.second < 0 ? next.second + p : next.second;
     return next;
+}
+
+pair<int, int> Elliptic::getPointByChar(char ch) {
+    return abelSet.at(ch - 0); // user ascii
+}
+
+char Elliptic::getCharByPoint(pair<int, int> point) {
+    for (int i = 0 ; i < abelSet.size(); i++) {
+        if (i > 128)
+            return '#';
+        
+        if (abelSet.at(i) == point) {
+            return i; // use ascii
+        }
+    }
+    
+    return '#';
 }

@@ -20,7 +20,7 @@ public:
     Elliptic ell;
     
     Tester()
-    :ell(1, 1, 23) {
+    :ell(0, -4, 211) {
         //Elliptic ell(1, 1, 23);
     }
     
@@ -64,6 +64,23 @@ public:
             cout << "(" << tmp.first << ", "  << tmp.second << "). Pass!" << endl;
         }
     }
+    
+    void testGetPointAndChar() {
+        pair<int, int> tmp(74, 201), t;
+        char ch;
+        if ((ch = ell.getCharByPoint(tmp)) == 'a') {
+            cout << "a PASS!" << endl;
+        }
+        
+        t = ell.getPointByChar('b');
+        if (t.first == 94 && t.second == 154) {
+            cout << "PASS" << endl;
+        } else {
+            cout << "FAIL" << endl;
+        }
+        
+    }
+    
 };
 
 int main(int argc, const char * argv[]) {
@@ -72,26 +89,11 @@ int main(int argc, const char * argv[]) {
 
 
     
-  /*  Tester test;
+    Tester test;
     test.testOutputAll();
-    test.testAddTwoPoints();*/
-
-
-
-	Elliptic ell = new Elliptic(1,1,17);
-
-	//generate k randomly
-	srand(time());
-	int k = rand() % 20;
-
-	// Q = kG
-	pair<int, int> Q = ell.GMultiplyBy(k);
-
-	//output all points in abel group 
-	ell.ouputAllPoints();
-
-
+    //test.testAddTwoPoints();
     
+    test.testGetPointAndChar();
     return 0;
 }
 

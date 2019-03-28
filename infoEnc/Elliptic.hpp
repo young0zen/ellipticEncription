@@ -11,9 +11,11 @@
 
 #include <iostream>
 #include <cmath>
+#include <vector>
 #include "util.hpp"
 
 using std::pair;
+using std::vector;
 
 class Elliptic {
 public:
@@ -29,6 +31,7 @@ public:
      *      n, n in n * G
      * Return:
      *      the position in pair<int, int>
+     * Same as multiplyPointBy when pass G as the first parameter
      */
     pair<int, int> GMultiplyBy(int n);
     
@@ -39,23 +42,31 @@ public:
      */
     pair<int, int> addTwoPoints(pair<int, int>, pair<int, int>);
     
-private:
-    int             a;                  /* parameter */
-    int             b;                  /* parameter */
-    int             p;                  /* modulo p */
-    pair<int, int>  generator;
-    
-    void pickGenerator();
-    
-    /* check if a certain point is on the curve */
-    bool isPointOnCurve(int x, int y);
-    
     /*
      * multiply a point by a number
      * Parameters: a point given in pair<int, int>, and a int n
      * Return: n * point
      */
     pair<int, int> multiplyPointBy(pair<int, int>, int);
+    
+    /* map a character to a point on curve */
+    pair<int, int> getPointByChar(char ch);
+    
+    /* map a point on curve to a character */
+    char getCharByPoint(pair<int, int> point);
+    
+private:
+    int             a;                  /* parameter */
+    int             b;                  /* parameter */
+    int             p;                  /* modulo p */
+    pair<int, int>  generator;
+    
+    vector<pair<int, int>> abelSet;
+    
+    void pickGenerator();
+    
+    /* check if a certain point is on the curve */
+    bool isPointOnCurve(int x, int y);
     
     /* multiply the point by two */
     pair<int, int> doublePoint(pair<int, int> point);
@@ -66,6 +77,8 @@ private:
      * Return: the sum of two points.
      */
     pair<int, int> helpComputeNextPoint(pair<int, int>, pair<int, int>, int);
+    
+    void generateAbelSet();
 };
 
 
