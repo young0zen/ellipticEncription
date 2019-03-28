@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <vector>
+#include <stdlib.h>
 #include "Elliptic.hpp"
 #include "util.hpp"
 
@@ -68,10 +69,28 @@ public:
 int main(int argc, const char * argv[]) {
     // insert code here...
     //Elliptic ell(0, -4, 211);
+
+
     
-    Tester test;
+  /*  Tester test;
     test.testOutputAll();
-    test.testAddTwoPoints();
+    test.testAddTwoPoints();*/
+
+
+
+	Elliptic ell = new Elliptic(1,1,17);
+
+	//generate k randomly
+	srand(time());
+	int k = rand() % 20;
+
+	// Q = kG
+	pair<int, int> Q = ell.GMultiplyBy(k);
+
+	//output all points in abel group 
+	ell.ouputAllPoints();
+
+
     
     return 0;
 }
