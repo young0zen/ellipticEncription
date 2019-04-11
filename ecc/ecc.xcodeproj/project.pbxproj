@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B1DF76B0225F5BD100220A52 /* shamir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1DF76AE225F5BD100220A52 /* shamir.cpp */; };
-		B1DF76B2225F5BE100220A52 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1DF76B1225F5BE100220A52 /* main.cpp */; };
+		B1DF76DE225F64DB00220A52 /* Elliptic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1DF76D9225F64DB00220A52 /* Elliptic.cpp */; };
+		B1DF76DF225F64DB00220A52 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1DF76DB225F64DB00220A52 /* main.cpp */; };
+		B1DF76E0225F64DB00220A52 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1DF76DC225F64DB00220A52 /* util.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B1DF76A1225F58D900220A52 /* CopyFiles */ = {
+		B1DF76CD225F644000220A52 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -24,14 +25,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B1DF76A3225F58D900220A52 /* shamir */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = shamir; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1DF76AE225F5BD100220A52 /* shamir.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shamir.cpp; sourceTree = SOURCE_ROOT; };
-		B1DF76AF225F5BD100220A52 /* shamir.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = shamir.hpp; sourceTree = SOURCE_ROOT; };
-		B1DF76B1225F5BE100220A52 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		B1DF76CF225F644000220A52 /* ecc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ecc; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1DF76D9225F64DB00220A52 /* Elliptic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Elliptic.cpp; sourceTree = SOURCE_ROOT; };
+		B1DF76DA225F64DB00220A52 /* Elliptic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Elliptic.hpp; sourceTree = SOURCE_ROOT; };
+		B1DF76DB225F64DB00220A52 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
+		B1DF76DC225F64DB00220A52 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = SOURCE_ROOT; };
+		B1DF76DD225F64DB00220A52 /* util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = util.hpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B1DF76A0225F58D900220A52 /* Frameworks */ = {
+		B1DF76CC225F644000220A52 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,97 +44,100 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B1DF769A225F58D900220A52 = {
+		B1DF76C6225F644000220A52 = {
 			isa = PBXGroup;
 			children = (
-				B1DF76A5225F58D900220A52 /* shamir */,
-				B1DF76A4225F58D900220A52 /* Products */,
+				B1DF76D1225F644000220A52 /* ecc */,
+				B1DF76D0225F644000220A52 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		B1DF76A4225F58D900220A52 /* Products */ = {
+		B1DF76D0225F644000220A52 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B1DF76A3225F58D900220A52 /* shamir */,
+				B1DF76CF225F644000220A52 /* ecc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B1DF76A5225F58D900220A52 /* shamir */ = {
+		B1DF76D1225F644000220A52 /* ecc */ = {
 			isa = PBXGroup;
 			children = (
-				B1DF76B1225F5BE100220A52 /* main.cpp */,
-				B1DF76AE225F5BD100220A52 /* shamir.cpp */,
-				B1DF76AF225F5BD100220A52 /* shamir.hpp */,
+				B1DF76D9225F64DB00220A52 /* Elliptic.cpp */,
+				B1DF76DA225F64DB00220A52 /* Elliptic.hpp */,
+				B1DF76DB225F64DB00220A52 /* main.cpp */,
+				B1DF76DC225F64DB00220A52 /* util.cpp */,
+				B1DF76DD225F64DB00220A52 /* util.hpp */,
 			);
-			path = shamir;
+			path = ecc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B1DF76A2225F58D900220A52 /* shamir */ = {
+		B1DF76CE225F644000220A52 /* ecc */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B1DF76AA225F58D900220A52 /* Build configuration list for PBXNativeTarget "shamir" */;
+			buildConfigurationList = B1DF76D6225F644000220A52 /* Build configuration list for PBXNativeTarget "ecc" */;
 			buildPhases = (
-				B1DF769F225F58D900220A52 /* Sources */,
-				B1DF76A0225F58D900220A52 /* Frameworks */,
-				B1DF76A1225F58D900220A52 /* CopyFiles */,
+				B1DF76CB225F644000220A52 /* Sources */,
+				B1DF76CC225F644000220A52 /* Frameworks */,
+				B1DF76CD225F644000220A52 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = shamir;
-			productName = shamir;
-			productReference = B1DF76A3225F58D900220A52 /* shamir */;
+			name = ecc;
+			productName = ecc;
+			productReference = B1DF76CF225F644000220A52 /* ecc */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B1DF769B225F58D900220A52 /* Project object */ = {
+		B1DF76C7225F644000220A52 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = unclesnake;
 				TargetAttributes = {
-					B1DF76A2225F58D900220A52 = {
+					B1DF76CE225F644000220A52 = {
 						CreatedOnToolsVersion = 10.2;
 					};
 				};
 			};
-			buildConfigurationList = B1DF769E225F58D900220A52 /* Build configuration list for PBXProject "shamir" */;
+			buildConfigurationList = B1DF76CA225F644000220A52 /* Build configuration list for PBXProject "ecc" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = B1DF769A225F58D900220A52;
-			productRefGroup = B1DF76A4225F58D900220A52 /* Products */;
+			mainGroup = B1DF76C6225F644000220A52;
+			productRefGroup = B1DF76D0225F644000220A52 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B1DF76A2225F58D900220A52 /* shamir */,
+				B1DF76CE225F644000220A52 /* ecc */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B1DF769F225F58D900220A52 /* Sources */ = {
+		B1DF76CB225F644000220A52 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1DF76B0225F5BD100220A52 /* shamir.cpp in Sources */,
-				B1DF76B2225F5BE100220A52 /* main.cpp in Sources */,
+				B1DF76DE225F64DB00220A52 /* Elliptic.cpp in Sources */,
+				B1DF76DF225F64DB00220A52 /* main.cpp in Sources */,
+				B1DF76E0225F64DB00220A52 /* util.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		B1DF76A8225F58D900220A52 /* Debug */ = {
+		B1DF76D4225F644000220A52 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -190,7 +196,7 @@
 			};
 			name = Debug;
 		};
-		B1DF76A9225F58D900220A52 /* Release */ = {
+		B1DF76D5225F644000220A52 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -242,7 +248,7 @@
 			};
 			name = Release;
 		};
-		B1DF76AB225F58D900220A52 /* Debug */ = {
+		B1DF76D7225F644000220A52 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -250,7 +256,7 @@
 			};
 			name = Debug;
 		};
-		B1DF76AC225F58D900220A52 /* Release */ = {
+		B1DF76D8225F644000220A52 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -261,25 +267,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B1DF769E225F58D900220A52 /* Build configuration list for PBXProject "shamir" */ = {
+		B1DF76CA225F644000220A52 /* Build configuration list for PBXProject "ecc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B1DF76A8225F58D900220A52 /* Debug */,
-				B1DF76A9225F58D900220A52 /* Release */,
+				B1DF76D4225F644000220A52 /* Debug */,
+				B1DF76D5225F644000220A52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B1DF76AA225F58D900220A52 /* Build configuration list for PBXNativeTarget "shamir" */ = {
+		B1DF76D6225F644000220A52 /* Build configuration list for PBXNativeTarget "ecc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B1DF76AB225F58D900220A52 /* Debug */,
-				B1DF76AC225F58D900220A52 /* Release */,
+				B1DF76D7225F644000220A52 /* Debug */,
+				B1DF76D8225F644000220A52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = B1DF769B225F58D900220A52 /* Project object */;
+	rootObject = B1DF76C7225F644000220A52 /* Project object */;
 }
