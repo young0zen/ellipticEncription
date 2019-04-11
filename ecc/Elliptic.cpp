@@ -89,9 +89,25 @@ pair<int, int> Elliptic::doublePoint(pair<int, int> point) {
     return helpComputeNextPoint(point, point, lambda);
 }
 
+using std::make_pair;
+
 pair<int, int> Elliptic::addTwoPoints(pair<int, int> pointa, pair<int, int> pointb) {
+	if (pointa == make_pair(-1, -1) && pointb == make_pair(-1, -1)) {
+		return make_pair(-1, -1);
+	}
+	if (pointa == make_pair(-1, -1)) {
+		return pointb;
+	}
+	if (pointb == make_pair(-1, -1)) {
+		return pointa;
+	}
+
     if (pointa == pointb)
         return doublePoint(pointa);
+
+	if (pointa.first == pointb.first) {
+		return make_pair(-1, -1);
+	}
     
     int numerator = pointb.second - pointa.second;
     int denominator = pointb.first - pointa.first;
@@ -103,6 +119,24 @@ pair<int, int> Elliptic::addTwoPoints(pair<int, int> pointa, pair<int, int> poin
     lambda = Util::convertToPositive(lambda, p);
     
     return helpComputeNextPoint(pointa, pointb, lambda);
+}
+
+pair<int, int> Elliptic::subtractTwoPoints(pair<int, int> pointa, pair<int, int> pointb) {
+	if (pointa == make_pair(-1, -1) && pointb == make_pair(-1, -1)) {
+		return make_pair(-1, -1);
+	}
+
+	if (pointa == make_pair(-1, -1)) {
+		return make_pair(pointb.first, p - pointb.second);
+	}
+
+	if (pointb == make_pair(-1, -1)) {
+		return pointa;
+	}
+
+	pair<int, int> inverse = make_pair(pointb.first, p - pointb.second);
+
+	return addTwoPoints(pointa, inverse);
 }
 
 pair<int, int> Elliptic::helpComputeNextPoint(pair<int, int> pointa, pair<int, int> pointb, int lambda) {
@@ -117,7 +151,7 @@ pair<int, int> Elliptic::helpComputeNextPoint(pair<int, int> pointa, pair<int, i
 }
 
 pair<int, int> Elliptic::getPointByChar(char ch) {
-    return abelSet.at(ch - 0); // user ascii
+    return abelSet.at(ch - 0); // use ascii
 }
 
 char Elliptic::getCharByPoint(pair<int, int> point) {
@@ -131,4 +165,8 @@ char Elliptic::getCharByPoint(pair<int, int> point) {
     }
     
     return '#';
+}
+
+pair<int, int> Elliptic::getGenerator() {
+	return generator;
 }

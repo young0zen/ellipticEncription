@@ -40,6 +40,8 @@ public:
      * Return: the sum of two points.
      */
     pair<int, int> addTwoPoints(pair<int, int>, pair<int, int>);
+
+	pair<int, int> subtractTwoPoints(pair<int, int>, pair<int, int>);
     
     /*
      * multiply a point by a number
@@ -53,6 +55,8 @@ public:
     
     /* map a point on curve to a character */
     char getCharByPoint(pair<int, int> point);
+
+	pair<int, int> getGenerator();
     
 private:
     int             a;                  /* parameter */
