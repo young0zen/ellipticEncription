@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include "Elliptic.hpp"
 #include "util.hpp"
-//#include "User.h"
+#include "User.h"
 
 using namespace std;
 
@@ -88,7 +88,7 @@ public:
 
 
 int main() {
-	/*
+	
 	User A;
 	User B(0,-4,211);
 	B.getEQG(B.sendCurve(), B.generateQ(), B.generateG());
@@ -98,11 +98,11 @@ int main() {
 		A.codeIntoCurve(code[i]);
 		B.getC1AndC2(A.generateC1(), A.generateC2());
 		cout << B.decode(B.calculateM()) << " ";
-	}s
+	}
 
 	cout << "end" << endl;
 
-	*/
+	
     return 0;
 }
 

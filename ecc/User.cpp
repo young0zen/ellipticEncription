@@ -48,7 +48,7 @@ pair<int, int> User::generateQ()
 {
 	cout << "Please Enter k:" << endl;
 	cin >> k;
-	this->k = k;
+	//this->k = k;
 	this->Q = e->GMultiplyBy(this->k);
 	return Q;
 }
@@ -64,7 +64,7 @@ pair<int, int> User::codeIntoCurve(char ch)
 	return M;
 }
 
-void User::getC1AndC2(pair<int,int>& C1,pair<int,int>& C2)
+void User::getC1AndC2(const pair<int,int>& C1,const pair<int,int>& C2)
 {
 	this->C1 = C1;
 	this->C2 = C2;
