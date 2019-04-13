@@ -15,8 +15,8 @@
  *      the result, -1 suggesting null
  */
 int Util::extEnclid(int d, int f) {
-    if (d > f)
-        std::swap(d, f);
+    //if (d > f)
+        //std::swap(d, f);
     
     int x1 = 1, x2 = 0, x3 = f;
     int y1 = 0, y2 = 1, y3 = d;

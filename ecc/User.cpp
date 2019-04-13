@@ -12,7 +12,7 @@ User::User(int a, int b, int p)
 
 User::~User()
 {
-	//delete e;
+	delete e;
 }
 
 void User::generateR()
@@ -64,7 +64,7 @@ Elliptic* User::sendCurve()
 pair<int, int> User::codeIntoCurve(char ch)
 {
 	this->M = e->getPointByChar(ch);
-	cout << "M in A: " << M.first << " " << M.second << endl;
+	//cout << "M in A: " << M.first << " " << M.second << endl;
 	return M;
 }
 
@@ -78,7 +78,7 @@ void User::getC1AndC2(const pair<int,int>& C1,const pair<int,int>& C2)
 pair<int, int> User::calculateM()
 {
 	this->M = e->subtractTwoPoints(this->C1, e->multiplyPointBy(this->C2, this->k));
-	cout << "M in B: " << M.first << "  " << M.second << endl;
+	//cout << "M in B: " << M.first << "  " << M.second << endl;
 	return M;
 }
 
@@ -89,7 +89,7 @@ char User::decode(pair<int, int> M)
 
 void User::getEQG(Elliptic* e, pair<int, int> Q, pair<int, int> G)
 {
-	this->e = e;
+	this->e = new Elliptic(*e);
 	this->Q = Q;
 	this->G = G;
 }

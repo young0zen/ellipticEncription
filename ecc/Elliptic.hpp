@@ -20,6 +20,7 @@ using std::vector;
 class Elliptic {
 public:
     Elliptic(int a, int b, int p);
+    Elliptic(Elliptic &e);
     ~Elliptic();
     
     /* print all points in the abel space */

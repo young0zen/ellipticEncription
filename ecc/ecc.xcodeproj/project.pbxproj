@@ -10,6 +10,7 @@
 		B1DF76DE225F64DB00220A52 /* Elliptic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1DF76D9225F64DB00220A52 /* Elliptic.cpp */; };
 		B1DF76DF225F64DB00220A52 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1DF76DB225F64DB00220A52 /* main.cpp */; };
 		B1DF76E0225F64DB00220A52 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1DF76DC225F64DB00220A52 /* util.cpp */; };
+		B1DF76E3225F97CD00220A52 /* User.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1DF76E1225F97CD00220A52 /* User.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		B1DF76DB225F64DB00220A52 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
 		B1DF76DC225F64DB00220A52 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = SOURCE_ROOT; };
 		B1DF76DD225F64DB00220A52 /* util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = util.hpp; sourceTree = SOURCE_ROOT; };
+		B1DF76E1225F97CD00220A52 /* User.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = User.cpp; sourceTree = SOURCE_ROOT; };
+		B1DF76E2225F97CD00220A52 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 		B1DF76D1225F644000220A52 /* ecc */ = {
 			isa = PBXGroup;
 			children = (
+				B1DF76E1225F97CD00220A52 /* User.cpp */,
+				B1DF76E2225F97CD00220A52 /* User.h */,
 				B1DF76D9225F64DB00220A52 /* Elliptic.cpp */,
 				B1DF76DA225F64DB00220A52 /* Elliptic.hpp */,
 				B1DF76DB225F64DB00220A52 /* main.cpp */,
@@ -128,6 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1DF76E3225F97CD00220A52 /* User.cpp in Sources */,
 				B1DF76DE225F64DB00220A52 /* Elliptic.cpp in Sources */,
 				B1DF76DF225F64DB00220A52 /* main.cpp in Sources */,
 				B1DF76E0225F64DB00220A52 /* util.cpp in Sources */,
