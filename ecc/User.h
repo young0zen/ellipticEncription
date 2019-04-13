@@ -15,11 +15,11 @@ public:
 	pair<int, int>				generateQ();
 	pair<int, int>				generateC1();
 	pair<int, int>				generateC2();
-	int							generateR();
+	void						generateR();
 	Elliptic*					sendCurve();
 	pair<int,int>				codeIntoCurve(char ch);
 	pair<int, int>				calculateM();
-	void						getC1AndC2(pair<int,int>& C1,pair<int,int>& C2);
+	void						getC1AndC2(const pair<int,int>& C1,const pair<int,int>& C2);
 	char						decode(pair<int,int> M);
 
 	void						getEQG(Elliptic* e, pair<int, int> Q, pair<int, int> G);
