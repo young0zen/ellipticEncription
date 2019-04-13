@@ -15,7 +15,7 @@ public:
 	pair<int, int>				generateQ();
 	pair<int, int>				generateC1();
 	pair<int, int>				generateC2();
-	int							generateR();
+	void						generateR();
 	Elliptic*					sendCurve();
 	pair<int,int>				codeIntoCurve(char ch);
 	pair<int, int>				calculateM();

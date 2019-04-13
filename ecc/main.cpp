@@ -91,16 +91,24 @@ int main() {
 	
 	User A;
 	User B(0,-4,211);
-	B.getEQG(B.sendCurve(), B.generateQ(), B.generateG());
+	A.getEQG(B.sendCurve(), B.generateQ(), B.generateG());
 	string code = "I am a boy";
 	for (int i = 0; i < code.size(); ++i)
 	{
 		A.codeIntoCurve(code[i]);
+		A.generateR();
 		B.getC1AndC2(A.generateC1(), A.generateC2());
 		cout << B.decode(B.calculateM()) << " ";
 	}
 
-	cout << "end" << endl;
+	/*char ch = 'c';
+	A.codeIntoCurve(ch);
+	A.generateR();
+	B.getC1AndC2(A.generateC1(), A.generateC2());
+	cout << B.decode(B.calculateM()) << " ";*/
+
+
+	cout << endl << "end" << endl;
 
 	
     return 0;
