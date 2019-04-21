@@ -19,20 +19,23 @@ class ShamirCenter {
 public:
     ShamirCenter(int t, int n);
     vector<int> getElements();
-    bool checkYourKey(int key);
-    pair<int, int> getPartialKey();
+    bool checkYourKey(long long key);
+    vector<pair<int, long long>> getAllKeys();
+    
+    long long solveKey(vector<pair<int, long long>>);
 
 private:
     const int shamirt;
     const int shamirn;
     vector<int> coefficients;
     vector<int> elements;
-    vector<int> shadowKey;
-    int count = 0;
+    vector<long long> shadowKey;
     
-    static const int DISTRIBUTION_SIZE = 100;
+    static const int DISTRIBUTION_SIZE = 10;
     
     long long compute(long long x);
+    
+    vector<int> generateRandomNumbers(int n);
 };
 
 #endif /* shamir_hpp */
