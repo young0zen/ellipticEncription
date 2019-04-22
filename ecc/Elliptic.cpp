@@ -127,14 +127,14 @@ pair<int, int> Elliptic::subtractTwoPoints(pair<int, int> pointa, pair<int, int>
 	}
 
 	if (pointa == make_pair(-1, -1)) {
-		return make_pair(pointb.first, p - pointb.second);
+		return make_pair(pointb.first, (p - pointb.second) % p);
 	}
 
 	if (pointb == make_pair(-1, -1)) {
 		return pointa;
 	}
 
-	pair<int, int> inverse = make_pair(pointb.first, p - pointb.second);
+	pair<int, int> inverse = make_pair(pointb.first % p, (p - pointb.second) % p);
 
 	return addTwoPoints(pointa, inverse);
 }
