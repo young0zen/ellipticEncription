@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B1DF76A7225F58D900220A52 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1DF76A6225F58D900220A52 /* main.cpp */; };
+		B1DF76B0225F5BD100220A52 /* shamir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1DF76AE225F5BD100220A52 /* shamir.cpp */; };
+		B1DF76B2225F5BE100220A52 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1DF76B1225F5BE100220A52 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +25,9 @@
 
 /* Begin PBXFileReference section */
 		B1DF76A3225F58D900220A52 /* shamir */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = shamir; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1DF76A6225F58D900220A52 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B1DF76AE225F5BD100220A52 /* shamir.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shamir.cpp; sourceTree = SOURCE_ROOT; };
+		B1DF76AF225F5BD100220A52 /* shamir.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = shamir.hpp; sourceTree = SOURCE_ROOT; };
+		B1DF76B1225F5BE100220A52 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +60,9 @@
 		B1DF76A5225F58D900220A52 /* shamir */ = {
 			isa = PBXGroup;
 			children = (
-				B1DF76A6225F58D900220A52 /* main.cpp */,
+				B1DF76B1225F5BE100220A52 /* main.cpp */,
+				B1DF76AE225F5BD100220A52 /* shamir.cpp */,
+				B1DF76AF225F5BD100220A52 /* shamir.hpp */,
 			);
 			path = shamir;
 			sourceTree = "<group>";
@@ -118,7 +123,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1DF76A7225F58D900220A52 /* main.cpp in Sources */,
+				B1DF76B0225F5BD100220A52 /* shamir.cpp in Sources */,
+				B1DF76B2225F5BE100220A52 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

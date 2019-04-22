@@ -20,6 +20,7 @@ using std::vector;
 class Elliptic {
 public:
     Elliptic(int a, int b, int p);
+    Elliptic(Elliptic &e);
     ~Elliptic();
     
     /* print all points in the abel space */
@@ -34,7 +35,6 @@ public:
      * Same as multiplyPointBy when pass G as the first parameter
      */
     pair<int, int> GMultiplyBy(int n);
-    
     /*
      * compute the (elliptic curve) sum of two points.
      * Parameter: two points given in pair<int, int>

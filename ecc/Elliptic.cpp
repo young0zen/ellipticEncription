@@ -21,6 +21,14 @@ Elliptic::Elliptic(int a, int b, int p) {
     generateAbelSet();
 }
 
+Elliptic::Elliptic(Elliptic &e) {
+    this->a = e.a;
+    this->b = e.b;
+    this->p = e.p;
+    this->generator = e.generator;
+    this->abelSet = e.abelSet;
+}
+
 Elliptic::~Elliptic() {
     
 }
@@ -71,6 +79,10 @@ bool Elliptic::isPointOnCurve(int x, int y) {
 }
 
 pair<int, int> Elliptic::multiplyPointBy(pair<int, int> p, int n) {
+    if (n == 0) {
+        return std::make_pair(-1, -1);
+    }
+    
     pair<int, int> curr = p;
     while(--n) {
         curr = addTwoPoints(curr, p);

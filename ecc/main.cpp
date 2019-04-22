@@ -88,29 +88,30 @@ public:
 
 
 int main() {
-	
+    
 	User A;
 	User B(0,-4,211);
 	A.getEQG(B.sendCurve(), B.generateQ(), B.generateG());
 	string code = "I am a boy";
-	/*for (int i = 0; i < code.size(); ++i)
+    
+	for (int i = 0; i < code.size(); ++i)
 	{
 		A.codeIntoCurve(code[i]);
 		A.generateR();
 		B.getC1AndC2(A.generateC1(), A.generateC2());
-		cout << B.decode(B.calculateM()) << " ";
-	}*/
+		cout << B.decode(B.calculateM());
+	}
+    cout << endl;
+    
+    
+    /*
 	char ch = 'c';
 	A.codeIntoCurve(ch);
 	A.generateR();
 	B.getC1AndC2(A.generateC1(), A.generateC2());
 	cout << B.decode(B.calculateM()) << " ";
-
-
-	cout << endl << "end" << endl;
-	system("pause");
-
-	
+    //cout << B.decode() << endl;
+    */
     return 0;
 }
 
