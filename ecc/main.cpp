@@ -102,7 +102,15 @@ int main() {
 		cout << B.decode(B.calculateM());
 	}
     cout << endl;
-    
+
+	//certificate
+	cout << "certificate add method:" << endl;
+	pair<int, int> pointa = { 115, 163 }; //120p
+	pair<int, int>  pointb = { 122,20 }; //134p
+	B.certificate(pointa,pointb);
+	cout << "All Abel Points:" << endl;
+	B.outputAbel();
+	system("pause");
     
     /*
 	char ch = 'c';
