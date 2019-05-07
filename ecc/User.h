@@ -21,7 +21,8 @@ public:
 	pair<int, int>				calculateM();
 	void						getC1AndC2(const pair<int,int>& C1,const pair<int,int>& C2);
 	char						decode(pair<int,int> M);
-
+	void						certificate(pair<int,int> pointa, pair<int,int> pointb);
+	void						outputAbel();
 	void						getEQG(Elliptic* e, pair<int, int> Q, pair<int, int> G);
 
 private:

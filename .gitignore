@@ -1,2 +1,11 @@
 ecc/.vs
 ecc/Debug
+ecc/.vs/ECC/v15/.suo
+ecc/.vs/ECC/v15/.suo
+*.log
+*.tlog
+*.pdb
+*.ipch
+ecc/.vs/ECC/v15/.suo
+*.db
+*.tlog

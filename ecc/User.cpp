@@ -93,3 +93,14 @@ void User::getEQG(Elliptic* e, pair<int, int> Q, pair<int, int> G)
 	this->Q = Q;
 	this->G = G;
 }
+
+void User::certificate(pair<int,int>pointa, pair<int,int>pointb)
+{
+	pair<int, int> add = e->addTwoPoints(pointa, pointb);
+	cout << "first: " << add.first << "  second: " << add.second << endl;
+}
+
+void User::outputAbel()
+{
+	e->ouputAllPoints();
+}
