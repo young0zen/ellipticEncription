@@ -3,7 +3,7 @@
 import socket
 import sys
 import getopt
-from thread import *
+from _thread import *
 
 host = "localhost"
 port = 23456
@@ -16,8 +16,7 @@ def serverThreadFunction(conn):
 def setup_socket(family, type):
     try:
         sock = socket.socket(family, type)
-    except socket.error, message:
-        print (message)
+    except socket.error:
         sys.exit(1)
     return sock
 
@@ -25,8 +24,7 @@ def launch_server(port):
     sock = setup_socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         sock.bind(('', port))
-    except socket.error, message:
-        print "Bind failed. Error " + str(message[0]) + ": " + message[1]
+    except socket.error:
         sock.close()
         sys.exit(1)
 
@@ -43,7 +41,7 @@ def connect_to_server(host, port):
     try:
         remote_addr = socket.gethostbyname(host)
     except socket.gaierror:
-        print "Host name could not be resolved. Aborting..."
+        print ("Host name could not be resolved. Aborting...")
         sock.close()
         sys.exit(1)
 

@@ -21,3 +21,4 @@ if ackA == ackB:
     print ("Success!")
 else:
     print ("Fail")
+# print ("ackA: %r" %ackA)

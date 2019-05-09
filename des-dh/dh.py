@@ -24,7 +24,6 @@ def get_generator_of(p):
 
     tmp = 2
     while True:
-
         if (tmp ** (p - 1) % p == 1):
             num = 2
             flag = True

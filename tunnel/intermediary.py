@@ -22,6 +22,7 @@ def convert_ip_family(bytes):
         return None
 
     bytes = bytes.decode("utf-8")
+    print("received", bytes)
     header = bytes[:16]
     if (header == "I AM IPV4 HEADER"):
         bytes = "I AM IPV6 HEADER" + bytes
