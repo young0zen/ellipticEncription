@@ -5,7 +5,7 @@ import sys
 import getopt
 from _thread import *
 import selectors
-import PseudoIPPacket
+#import PseudoIPPacket
 
 sel = selectors.DefaultSelector()
 
