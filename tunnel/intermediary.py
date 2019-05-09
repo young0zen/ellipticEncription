@@ -5,14 +5,33 @@ import sys
 import getopt
 from _thread import *
 import selectors
+import PseudoIPPacket
 
 sel = selectors.DefaultSelector()
 
-#host = "localhost"
 port = 23456
+next_hop_port = 0
+next_hop_host = "localhost"
 
 # A map from connection id to two-tuple (client_socket, to_remote_socket)
 connection_map_dic = {}
+
+def convert_ip_family(bytes):
+    if (len(bytes) < 16):
+        print("Error: unrecognized header format.")
+        return None
+
+    bytes = bytes.decode("utf-8")
+    header = bytes[:16]
+    if (header == "I AM IPV4 HEADER"):
+        bytes = "I AM IPV6 HEADER" + bytes
+    elif (header == "I AM IPV6 HEADER"):
+        bytes = bytes[16:]
+    else:
+        print("Error: unrecognized header format.")
+        return None
+
+    return bytes.encode("utf-8")
 
 def setup_socket(family, type):
     try:
@@ -64,23 +83,27 @@ def read(conn, id):
             socket_pair[1].close()
             del connection_map_dic[id]
     else:
+        data = convert_ip_family(data)
+        if (data == None): # unrecognized protocol
+            return
+
         socket_pair = connection_map_dic.get(id, None)
         if (socket_pair == None): # not in the dictionary
-            msg = data.decode("utf-8")
-            msg = msg.strip()
-            host_port = msg.split(':')
-            if (len(host_port) != 2):
-                print ("Unrecognized format. Sould be host:port.")
-                return
-            to_server_sock = connect_to_server(host_port[0], int(host_port[1]))
+
+            host_port = [next_hop_host, next_hop_port]
+
+            to_server_sock = connect_to_server(host_port[0], host_port[1])
             if (to_server_sock == -1):
                 print ("Cannot connect to server.")
             else:
                 connection_map_dic[id] = (conn, to_server_sock)
                 sel.register(to_server_sock, selectors.EVENT_READ, (read, id))
-                print ("Connected to " + host_port[0] + ", port " + host_port[1])
+                print ("Connected to " + host_port[0] + ", port " + str(host_port[1]))
+                to_server_sock.send(data) # forward it to server
+
         # send it to the other side
         elif (conn == socket_pair[0]):
+            # add packet header here and send it
             socket_pair[1].send(data)
         elif (conn == socket_pair[1]):
             socket_pair[0].send(data)
@@ -93,13 +116,14 @@ def get_available_connection_id():
     return connection_id
 
 # main
-opts, args = getopt.getopt(sys.argv[1:], "h:p:")
+opts, args = getopt.getopt(sys.argv[1:], "h:p:n:")
 for op, value in opts:
     if op == "-h":
-        pass
-        #host = value
+        next_hop_host = value
     elif op == "-p":
         port = int(value)
+    elif op == "-n":
+        next_hop_port = int(value)
 
 sock = setup_socket(socket.AF_INET, socket.SOCK_STREAM)
 
